@@ -1,0 +1,104 @@
+import React from 'react';
+import { Fade } from 'react-awesome-reveal';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPlay } from 'react-icons/fa';
+import '../../App.css';
+
+const NavBar = () => {
+  // Slider settings for React-Slick
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
+  // Banner images (replace with your own image URLs)
+  const bannerImages = [
+    'https://res.cloudinary.com/dfn1s2ysa/image/upload/v1742926847/Sports%20Store/Banner%20Image/largest-sports-equipment-companies.jpg_jdy1du.webp',
+    'https://via.placeholder.com/600x400?text=Banner+2',
+    'https://via.placeholder.com/600x400?text=Banner+3',
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white font-sans">
+      {/* Navigation Bar */}
+      <nav className="flex justify-between items-center p-6">
+        <div className="text-3xl font-bold text-yellow-400">LIZU</div>
+        <ul className="flex space-x-8">
+          {['Home', 'About', 'Work', 'Portfolio', 'Blog', 'Contact'].map((item) => (
+            <li key={item}>
+              <a
+                href="#"
+                className="text-gray-300 hover:text-yellow-400 transition-colors duration-300"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Main Section */}
+      <div className="flex items-center justify-between px-10 py-20">
+        {/* Left Section: Text and Button */}
+        <div className="space-y-6">
+          <Fade direction="left" triggerOnce>
+            <h1 className="text-5xl font-bold">Hello, I’m Lizu Prionti</h1>
+            <p className="text-xl text-gray-400">Fashion Designer</p>
+            <button className="mt-4 px-6 py-3 bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300">
+              Download CV
+            </button>
+          </Fade>
+        </div>
+        {/* Right Section: Banner Slider */}
+        <div className="w-1/2">
+          <Fade direction="right" triggerOnce>
+            <Slider {...sliderSettings}>
+              {bannerImages.map((image, index) => (
+                <div key={index} className="relative">
+                  <img
+                    src={image}
+                    alt={`Banner ${index + 1}`}
+                    className="w-full h-96 object-cover rounded-lg"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="p-4 bg-yellow-400 rounded-full text-gray-900 hover:bg-yellow-500 transition-colors duration-300">
+                      <FaPlay />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </Fade>
+        </div>
+      </div>
+
+      {/* Social Icons (Bottom Left) */}
+      <div className="fixed bottom-10 left-10 flex flex-col space-y-4">
+        {[
+          { icon: <FaFacebookF />, link: '#' },
+          { icon: <FaTwitter />, link: '#' },
+          { icon: <FaInstagram />, link: '#' },
+          { icon: <FaLinkedinIn />, link: '#' },
+        ].map((social, index) => (
+          <a
+            key={index}
+            href={social.link}
+            className="text-gray-300 hover:text-yellow-400 hover:scale-125 transition-all duration-300"
+          >
+            {social.icon}
+          </a>
+        ))}
+        <div className="w-10 h-1 bg-yellow-400 mt-4"></div>
+      </div>
+    </div>
+  );
+};
+
+export default NavBar;

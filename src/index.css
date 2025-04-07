@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+.slick-dots li button:before {
+  color: #facc15 !important; /* Yellow dots */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #facc15 !important;
+}
