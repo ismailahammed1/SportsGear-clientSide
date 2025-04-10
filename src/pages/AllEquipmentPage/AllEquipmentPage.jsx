@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const AllEquipmentPage = () => {
@@ -31,6 +32,8 @@ const AllEquipmentPage = () => {
                   <th className="py-3 px-4 text-left">Rating </th>
                   <th className="py-3 px-4 text-left">Price ($)</th>
                   <th className="py-3 px-4 text-center">Actions</th>
+                  <th className="py-3 px-4 text-center">Update</th>
+                  <th className="py-3 px-4 text-center">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,6 +50,21 @@ const AllEquipmentPage = () => {
                       >
                         View Details
                       </Link>
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      <Link
+                      to={`/update-equipment/${item._id}`}
+                        className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 transition"
+                      >
+                       Update
+                      </Link>
+                      
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                     {/* <button
+                       onClick={() => handleRemoveItem(item._id)}>
+                      <RiDeleteBin6Line className="text-5xl text-center " />
+                      </button> */}
                     </td>
                   </tr>
                 ))}

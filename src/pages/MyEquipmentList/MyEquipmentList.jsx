@@ -96,12 +96,7 @@ const MyEquipmentList = () => {
                     <span className="text-lg font-bold text-yellow-600">
                       ${item.price}
                     </span>
-                    <Link
-                      to={`/update-equipment/${item._id}`}
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition ml-2"
-                    >
-                      Update
-                    </Link>
+                   
                     <button
                       onClick={() => handleRemoveItem(item._id)}
                       className="p-2 bg-red-500 text-white rounded hover:bg-red-600 transition"

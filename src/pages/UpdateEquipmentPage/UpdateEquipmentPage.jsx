@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import { AuthContext } from "../../context/AuthProvider";
 const UpdateEquipmentPage = () => {
   const equipmentValue = useLoaderData();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(AuthContext);
   const {
     _id,
@@ -26,7 +27,19 @@ const UpdateEquipmentPage = () => {
 
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const form = e.target;
+    const price = parseFloat(form.price.value);
+  const rating = parseFloat(form.rating.value);
+  
+  if (price <= 0) {
+    Swal.fire("Error!", "Price must be greater than 0", "error");
+    return;
+  }
+  if (rating < 1 || rating > 5) {
+    Swal.fire("Error!", "Rating must be between 1 and 5", "error");
+    return;
+  }
     const updatedEquipment = {
       image: form.image.value,
       itemName: form.itemName.value,
@@ -57,7 +70,10 @@ const UpdateEquipmentPage = () => {
       }
     } catch (error) {
       Swal.fire("Error!", "Could not update the equipment.", "error");
+    }finally {
+      setIsLoading(false);
     }
+
   };
 
   return (
@@ -206,11 +222,12 @@ const UpdateEquipmentPage = () => {
             </div>
 
             <button
-              type="submit"
-              className="w-full mt-4 px-4 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-md hover:bg-yellow-500 transition-colors duration-300"
-            >
-              Update Product
-            </button>
+      type="submit"
+      disabled={isLoading}
+      className={`w-full mt-4 px-4 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-md hover:bg-yellow-500 transition-colors duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+    >
+      {isLoading ? 'Updating...' : 'Update Product'}
+    </button>
           </form>
         </Fade>
       </div>
