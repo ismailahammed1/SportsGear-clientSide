@@ -1,4 +1,3 @@
-// src/routes/Router.jsx
 import { createBrowserRouter } from "react-router-dom"; 
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home"; 
@@ -10,6 +9,7 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
 import MyEquipmentList from "../pages/MyEquipmentList/MyEquipmentList";
 import PrivateRoute from "./PrivateRoute";
+import UpdateEquipmentPage from "../pages/UpdateEquipmentPage/UpdateEquipmentPage";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "add-equipment", 
-        element:<PrivateRoute><AddProductPage /></PrivateRoute> 
+        element: <PrivateRoute><AddProductPage /></PrivateRoute> 
       },
       {
         path: "all-equipment", 
@@ -39,12 +39,16 @@ const router = createBrowserRouter([
       },
       {
         path: "equipment/:id", 
-        
         element: <PrivateRoute><ViewDetails /></PrivateRoute>
       },
       {
         path: "my-equipment-list",
         element: <PrivateRoute><MyEquipmentList /></PrivateRoute>
+      },
+      {
+        path: "update-equipment/:id",
+        element: <PrivateRoute><UpdateEquipmentPage /></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
       },
     ]
   }

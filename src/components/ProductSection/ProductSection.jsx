@@ -33,10 +33,10 @@ const ProductSection = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((product) => (
               <div key={product._id} className="bg-gray-800 p-4 rounded-lg shadow-lg">
-                <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-md" />
-                <h3 className="text-xl mt-4">{product.name}</h3>
+                <img src={product.image} alt={product.itemName} className="w-full h-40 object-cover rounded-md" />
+                <h3 className="text-xl mt-4">{product.itemName}</h3>
                 <p className="text-yellow-400">${product.price}</p>
-                <Link to={`/product/${product._id}`} className="block mt-4 bg-yellow-400 text-gray-900 text-center py-2 rounded-lg font-semibold hover:bg-yellow-500">
+                <Link to={`/equipment/${product._id}`} className="block mt-4 bg-yellow-400 text-gray-900 text-center py-2 rounded-lg font-semibold hover:bg-yellow-500">
                   View Details
                 </Link>
               </div>
@@ -44,6 +44,11 @@ const ProductSection = () => {
           </div>
         </Fade>
       </div>
+      <Link 
+      className="w-50 items-center mx-auto block mt-4 bg-yellow-400 text-gray-900 text-center py-2 rounded-lg font-semibold hover:bg-yellow-500"
+      >
+      
+      View More</Link>
     </section>
   );
 };

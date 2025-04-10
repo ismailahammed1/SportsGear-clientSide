@@ -8,7 +8,7 @@ const AddProductPage = () => {
   const [subCategory, setSubCategory] = useState("");
   const { user } = useContext(AuthContext);
   const userName = user?.displayName || "";
-const userEmail = user?.email || "";
+  const userEmail = user?.email || "";
 
   const handleAddProducts = async (e) => {
     e.preventDefault();
@@ -59,7 +59,6 @@ const userEmail = user?.email || "";
         icon: "success",
         confirmButtonColor: "#FFD700",
       });
-
     } catch (error) {
       console.error("Error adding product:", error);
 
@@ -89,11 +88,12 @@ const userEmail = user?.email || "";
           >
             {/* Image Upload */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Upload Image</label>
+              <label className="block text-sm font-medium mb-1">
+                Upload Image
+              </label>
               <input
                 type="text"
                 name="image"
-                
                 required
                 className="w-full bg-gray-700 text-white px-3 py-2 rounded-md"
               />
@@ -101,7 +101,9 @@ const userEmail = user?.email || "";
 
             {/* Item Name */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Item Name</label>
+              <label className="block text-sm font-medium mb-1">
+                Item Name
+              </label>
               <input
                 type="text"
                 name="itemName"
@@ -129,7 +131,9 @@ const userEmail = user?.email || "";
             {/* Subcategory (Shows only if Football or Cricket is selected) */}
             {category && (
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Subcategory</label>
+                <label className="block text-sm font-medium mb-1">
+                  Subcategory
+                </label>
                 <select
                   name="subCategory"
                   required
@@ -158,7 +162,9 @@ const userEmail = user?.email || "";
 
             {/* Description */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Description</label>
+              <label className="block text-sm font-medium mb-1">
+                Description
+              </label>
               <textarea
                 name="description"
                 required
@@ -169,7 +175,9 @@ const userEmail = user?.email || "";
             {/* Price & Rating */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Price ($)</label>
+                <label className="block text-sm font-medium mb-1">
+                  Price ($)
+                </label>
                 <input
                   type="number"
                   name="price"
@@ -178,7 +186,9 @@ const userEmail = user?.email || "";
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Rating (1-5)</label>
+                <label className="block text-sm font-medium mb-1">
+                  Rating (1-5)
+                </label>
                 <input
                   type="number"
                   name="rating"
@@ -192,7 +202,9 @@ const userEmail = user?.email || "";
 
             {/* Customization */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Customization</label>
+              <label className="block text-sm font-medium mb-1">
+                Customization
+              </label>
               <input
                 type="text"
                 name="customization"
@@ -202,7 +214,9 @@ const userEmail = user?.email || "";
 
             {/* Processing Time */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Processing Time</label>
+              <label className="block text-sm font-medium mb-1">
+                Processing Time
+              </label>
               <input
                 type="text"
                 name="processingTime"
@@ -213,7 +227,9 @@ const userEmail = user?.email || "";
 
             {/* Stock Status */}
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Stock Status</label>
+              <label className="block text-sm font-medium mb-1">
+                Stock Status
+              </label>
               <select
                 name="stockStatus"
                 required
@@ -224,29 +240,33 @@ const userEmail = user?.email || "";
                 <option value="Out of Stock">Out of Stock</option>
               </select>
             </div>
-{/* User Name (read-only) */}
-<div className="mb-4">
-  <label className="block text-sm font-medium mb-1">Your Name</label>
-  <input
-    type="text"
-    name="userName"
-    value={userName}
-    readOnly
-    className="w-full bg-gray-700 text-white px-3 py-2 rounded-md cursor-not-allowed opacity-75"
-  />
-</div>
+            {/* User Name (read-only) */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
+                Your Name
+              </label>
+              <input
+                type="text"
+                name="userName"
+                value={userName}
+                readOnly
+                className="w-full bg-gray-700 text-white px-3 py-2 rounded-md cursor-not-allowed opacity-75"
+              />
+            </div>
 
-{/* User Email (read-only) */}
-<div className="mb-4">
-  <label className="block text-sm font-medium mb-1">Your Email</label>
-  <input
-    type="email"
-    name="userEmail"
-    value={userEmail}
-    readOnly
-    className="w-full bg-gray-700 text-white px-3 py-2 rounded-md cursor-not-allowed opacity-75"
-  />
-</div>
+            {/* User Email (read-only) */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
+                Your Email
+              </label>
+              <input
+                type="email"
+                name="userEmail"
+                value={userEmail}
+                readOnly
+                className="w-full bg-gray-700 text-white px-3 py-2 rounded-md cursor-not-allowed opacity-75"
+              />
+            </div>
 
             {/* Submit Button */}
             <button
