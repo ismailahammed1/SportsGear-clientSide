@@ -14,7 +14,8 @@ const SportsEquipnetNav = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-800">
+    <section className="py-20 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white">
+
       <div className="container mx-auto px-4">
         <Slide direction="down" triggerOnce>
           <h2 className="text-4xl font-bold text-center text-yellow-400 mb-12">

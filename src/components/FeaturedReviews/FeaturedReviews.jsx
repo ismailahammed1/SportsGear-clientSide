@@ -1,6 +1,5 @@
 import React from "react";
 import { Fade, Zoom } from "react-awesome-reveal";
-
 const FeaturedReviews = () => {
   const reviews = [
     { name: "John Doe", comment: "Amazing quality!", rating: 5 },
@@ -9,7 +8,7 @@ const FeaturedReviews = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-700 text-white">
+    <section className="py-12 dark:bg-gray-700 dark:text-white bg-gray-400 text-gray-900">
       <div className="container mx-auto px-6">
         
         {/* Title with animation */}
@@ -23,10 +22,10 @@ const FeaturedReviews = () => {
         <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
           {reviews.map((review, index) => (
             <Zoom key={index} triggerOnce>
-              <div className="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="dark:bg-gray-800 bg-gray-600  p-6 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 
                 {/* Review Text */}
-                <p className="text-lg italic text-gray-300">"{review.comment}"</p>
+                <p className="text-lg italic dark:text-gray-300">"{review.comment}"</p>
                 
                 {/* Reviewer Name */}
                 <p className="mt-3 text-yellow-400 font-semibold">- {review.name}</p>

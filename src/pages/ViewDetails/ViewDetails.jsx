@@ -65,9 +65,9 @@ const ViewDetails = () => {
   }
 
   return (
-    <section className="py-12 px-4 md:px-8 bg-gray-900 text-white min-h-screen">
+    <section className=" py-12 px-4 md:px-8 bg-gray-900 text-white min-h-screen">
       <Fade>
-        <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col md:flex-row gap-6">
+        <div className="max-w-4xl mt-12 mx-auto bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col md:flex-row gap-6">
           <img
             src={equipment.image}
             alt={equipment.itemName}

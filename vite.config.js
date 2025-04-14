@@ -7,4 +7,17 @@ export default defineConfig({
   plugins: [react(),tailwindcss(),
     
   ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        background: 'var(--background-color)',
+        text: 'var(--text-color)',
+        primary: 'var(--primary-color)',
+      },
+    },
+  }
+  
 })
+
+

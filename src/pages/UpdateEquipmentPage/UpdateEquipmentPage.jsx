@@ -77,8 +77,8 @@ const UpdateEquipmentPage = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-900 text-white">
-      <div className="container mx-auto px-6">
+    <section className="py-12  mt-12 dark:bg-gray-900 dark:text-white bg-gray-400">
+      <div className="container mx-auto px-6 mt-12">
         <Fade direction="down">
           <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8">
             Update Product

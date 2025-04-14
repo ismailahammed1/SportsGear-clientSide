@@ -15,7 +15,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-800 text-gray-300 py-12">
+    <footer className="dark:bg-gray-800 dark:text-gray-300 bg-gray-300 text-gray-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Website Info */}
@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Contact Us</h4>
+            <h4 className="text-lg font-semibold drak:text-white text-gray-950">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-center space-x-2">
                 <FaPhone className="text-yellow-400" />
@@ -50,8 +50,8 @@ const Footer = () => {
 
           {/* Social Media and Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Follow Us</h4>
-            <div className="flex space-x-4">
+            <h4 className="text-lg font-semibold drak:text-white text-gray-950">Follow Us</h4>
+            <div className="flex space-x-4 drak:text-white text-gray-950">
               {[
                 { icon: <FaFacebookF />, link: "https://facebook.com/sportsgear" },
                 { icon: <FaTwitter />, link: "https://twitter.com/sportsgear" },
@@ -63,14 +63,14 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-300"
+                  className="drak:text-white text-gray-950 hover:text-yellow-400 transition-colors duration-300"
                 >
                   <span className="text-xl">{social.icon}</span>
                 </a>
               ))}
             </div>
             <div className="space-y-2">
-              <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+              <h4 className="text-lg font-semibold drak:text-white text-gray-950">Quick Links</h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link to="/" className="hover:text-yellow-400 transition-colors duration-300">

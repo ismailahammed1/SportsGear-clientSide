@@ -1,11 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
-
-.slick-dots li button:before {
-  color: #facc15 !important; /* Yellow dots */
+@custom-variant dark (&:where(.dark, .dark *));
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake;
 }
-
-.slick-dots li.slick-active button:before {
-  color: #facc15 !important;
+html {
+  transition: background-color 0.3s, color 0.3s;
 }

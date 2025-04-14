@@ -10,7 +10,7 @@ import LatestNews from '../../components/LatestNews/LatestNews';
 
 const Home = () => {
   return (
-    <div className="bg-gray-900 min-h-screen text-white">
+    <div >
       <NavBar />
       <Banner />
       <SportsEquipnetNav />

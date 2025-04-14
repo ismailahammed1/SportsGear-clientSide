@@ -1,4 +1,3 @@
-// src/components/Banner/Banner.jsx
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import Slider from 'react-slick';
@@ -42,17 +41,17 @@ const Banner = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-10 py-10 lg:py-20 min-h-[80vh] bg-gray-800">
+    <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-10 py-10 lg:py-20 min-h-[80vh] bg-gray-400 dark:bg-gray-800">
       {/* Left Section: Text and Button */}
       <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left mb-8 lg:mb-0">
         <Fade direction="left" triggerOnce>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
             Elevate Your Game with SportsGear
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400">
+          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-400">
             Premium Sports Equipment Store
           </p>
-          <button className="mt-4 px-6 py-3 bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300 rounded-lg">
+          <button className="mt-4 px-6 py-3 bg-transparent border-2 border-yellow-400 text-gray-900 dark:text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300 rounded-lg">
             Shop Now
           </button>
         </Fade>

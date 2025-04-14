@@ -9,7 +9,7 @@ const LatestNews = () => {
     ];
   
     return (
-      <section className="py-12 bg-gray-900 text-white">
+      <section className="py-12 dark:bg-gray-900 bg-gray-300 text-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8">Latest News</h2>
           <Fade cascade damping={0.3} triggerOnce>

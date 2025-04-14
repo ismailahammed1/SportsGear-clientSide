@@ -36,7 +36,7 @@ const AllEquipmentPage = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-900 text-white">
+    <section className="py-12 mt-20  dark:bg-gray-900 dark:text-white bg-gray-300 text-gray-100">
       <div className="container mx-auto px-6">
         <Fade direction="down">
           <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8">
