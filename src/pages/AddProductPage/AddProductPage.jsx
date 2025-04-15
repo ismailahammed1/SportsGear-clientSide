@@ -56,6 +56,7 @@ const AddProductPage = () => {
 
       // Show success alert and navigate
       Swal.fire({
+        position: 'center',
         title: "Success!",
         text: "Product added successfully!",
         icon: "success",
@@ -68,6 +69,7 @@ const AddProductPage = () => {
 
       // Show error alert
       Swal.fire({
+        position: 'center',
         title: "Error!",
         text: "Failed to add product. Please try again!",
         icon: "error",

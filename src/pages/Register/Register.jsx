@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
@@ -6,9 +6,14 @@ import Swal from 'sweetalert2';
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -30,25 +35,34 @@ const Register = () => {
         body: JSON.stringify(newUser)
       });
 
+      if (!response.ok) {
+        throw new Error('Failed to save user to database');
+      }
+
       const data = await response.json();
 
       if (data.insertedId) {
-        Swal.fire({
+        await Swal.fire({
+          position: 'center',
           icon: 'success',
           title: 'Registration Successful',
           text: `Welcome ${name}!`,
-          timer: 1500,
           showConfirmButton: false,
+          timer: 1500
         });
         navigate('/');
       }
     } catch (error) {
       console.error("Registration error:", error);
+      setError(error.message);
       Swal.fire({
+        position: 'center',
         icon: 'error',
         title: 'Registration Failed',
         text: error.message || 'Something went wrong.',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,6 +70,13 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">Register</h2>
+        
+        {error && (
+          <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleRegister} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300">
@@ -96,8 +117,9 @@ const Register = () => {
           <button
             type="submit"
             className="w-full px-4 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-md hover:bg-yellow-500 transition-colors duration-300"
+            disabled={loading}
           >
-            Register
+            {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-400">
