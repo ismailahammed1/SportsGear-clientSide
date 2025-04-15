@@ -7,64 +7,49 @@ const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log("Registering user:", name, email, password);
+    try {
+      const userCredential = await createUser(email, password, name);
+      
+      const newUser = {
+        name,
+        email,
+        photoURL: userCredential.user.photoURL,
+        createdAt: new Date().toISOString(),
+        firebaseUid: userCredential.user.uid
+      };
 
-    createUser(email, password)
-      .then((result) => {
-        const createAt=result?.user?.metadata?.creationTime;
-        const newUser = { name, email,createAt };
-       
-        console.log("Firebase result:", result, "User to save:", newUser,createAt);
-
-        // Save user info to MongoDB
-        fetch(`http://localhost:5000/users`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newUser)
-        })
-        .then(res => res.json()) 
-        .then(data => {
-        if (data.insertedId) {
-          console.log("user create database");
-          
-        }
-          Swal.fire({
-            icon: 'success',
-            title: 'Registration Successful',
-            text: 'Welcome to SportsGear!',
-            timer: 1500,
-            showConfirmButton: false,
-          });
-
-          // ✅ Navigate to homepage or login
-          navigate('/');
-        })
-        .catch((error) => {
-          console.error("Error saving user to DB:", error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Registration Failed',
-            text: 'Could not save user to database.',
-          });
-        });
-      })
-      .catch((error) => {
-        console.error("Firebase registration error:", error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Registration Failed',
-          text: error.message || 'Something went wrong.',
-        });
+      const response = await fetch(`http://localhost:5000/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
       });
+
+      const data = await response.json();
+
+      if (data.insertedId) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful',
+          text: `Welcome ${name}!`,
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        navigate('/');
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Registration Failed',
+        text: error.message || 'Something went wrong.',
+      });
+    }
   };
 
   return (

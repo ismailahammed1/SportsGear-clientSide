@@ -1,4 +1,3 @@
-// src/context/AuthProvider.jsx
 import React, { createContext, useState, useEffect } from "react";
 import { auth } from "../firebase/firebase.init";
 import { 
@@ -7,45 +6,69 @@ import {
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  updateProfile
 } from "firebase/auth";
-import { Navigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
-
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Create user with email and password
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+  const fetchDbUser = async (email) => {
+    try {
+      const response = await fetch(`http://localhost:5000/users?email=${email}`);
+      const data = await response.json();
+      return data.length > 0 ? data[0] : null;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return null;
+    }
   };
 
-  // Sign in with email and password
+  const createUser = async (email, password, name) => {
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: name,
+        photoURL: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`
+      });
+      return userCredential;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-  // Logout user
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  // Track auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        const dbUser = await fetchDbUser(currentUser.email);
+        setUser({
+          ...currentUser,
+          displayName: dbUser?.name || currentUser.displayName,
+          photoURL: dbUser?.photoURL || currentUser.photoURL
+        });
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
     return () => unsubscribe();
