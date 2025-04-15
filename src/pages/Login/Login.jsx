@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate, useLocation } from 'react-router-dom'; 
 import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
@@ -17,23 +20,23 @@ const Login = () => {
     try {
       await signIn(email, password);
       console.log("Logged in successfully!");
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (error) {
       console.error("Login failed:", error.message);
       alert("Login failed: " + error.message);
     }
   };
+
   const handleGoogleLogin = async () => {
     try {
       await googleSignIn();
       console.log("Google login successful!");
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (error) {
       console.error("Google login failed:", error.message);
       alert("Google login failed: " + error.message);
     }
   };
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-300">

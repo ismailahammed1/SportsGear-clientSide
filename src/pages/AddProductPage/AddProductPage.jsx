@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthProvider";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const AddProductPage = () => {
   const [category, setCategory] = useState("");
@@ -9,6 +10,7 @@ const AddProductPage = () => {
   const { user } = useContext(AuthContext);
   const userName = user?.displayName || "";
   const userEmail = user?.email || "";
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleAddProducts = async (e) => {
     e.preventDefault();
@@ -52,12 +54,14 @@ const AddProductPage = () => {
       const data = await response.json();
       console.log("Server Response:", data);
 
-      // Show success alert
+      // Show success alert and navigate
       Swal.fire({
         title: "Success!",
         text: "Product added successfully!",
         icon: "success",
         confirmButtonColor: "#FFD700",
+      }).then(() => {
+        navigate("/all-equipment"); // Navigate to /all-equipment
       });
     } catch (error) {
       console.error("Error adding product:", error);

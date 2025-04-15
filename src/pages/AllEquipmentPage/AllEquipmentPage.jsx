@@ -54,7 +54,6 @@ const AllEquipmentPage = () => {
                   <th className="py-3 px-4 text-left">Rating</th>
                   <th className="py-3 px-4 text-left">Price ($)</th>
                   <th className="py-3 px-4 text-center">Actions</th>
-                  <th className="py-3 px-4 text-center">Update</th>
                   <th className="py-3 px-4 text-center">Delete</th>
                 </tr>
               </thead>
@@ -76,14 +75,7 @@ const AllEquipmentPage = () => {
                         View Details
                       </Link>
                     </td>
-                    <td className="py-3 px-4 text-center">
-                      <Link
-                        to={`/update-equipment/${item._id}`}
-                        className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 transition"
-                      >
-                        Update
-                      </Link>
-                    </td>
+                 
                     <td className="py-3 px-4 text-center">
                       <button
                         onClick={() => {

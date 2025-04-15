@@ -64,7 +64,7 @@ const UpdateEquipmentPage = () => {
 
       if (res.ok) {
         Swal.fire("Updated!", "Equipment updated successfully.", "success");
-        navigate("/my-equipment-list");
+        navigate(navigate(-1));
       } else {
         throw new Error("Update failed");
       }
