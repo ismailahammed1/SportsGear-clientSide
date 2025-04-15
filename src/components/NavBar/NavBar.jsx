@@ -15,8 +15,8 @@ const NavBar = () => {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "All Equipment", path: "/all-equipment" },
-    { name: "Add Equipment", path: "/add-equipment", private: true },
-    { name: "My Equipment List", path: "/my-equipment-list", private: true },
+    { name: "Add Equipment", path: "/add-equipment"},
+    { name: "My Equipment List", path: "/my-equipment-list"},
   ];
 
   return (

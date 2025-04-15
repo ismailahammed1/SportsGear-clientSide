@@ -80,7 +80,7 @@ const AddProductPage = () => {
     <section className="py-12 bg-gray-900 text-white">
       <div className="container mx-auto px-6">
         <Fade direction="down">
-          <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8">
+          <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8 mt-16">
             Add a New Product
           </h2>
         </Fade>
@@ -158,6 +158,7 @@ const AddProductPage = () => {
                       <option value="Bats">Bats</option>
                       <option value="Balls">Balls</option>
                       <option value="Gloves">Gloves</option>
+                      <option value="Gloves">helmate</option>
                     </>
                   )}
                 </select>
