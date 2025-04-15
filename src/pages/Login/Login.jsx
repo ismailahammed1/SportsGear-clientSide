@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleEmailLogin = async (e) => {
@@ -22,10 +23,17 @@ const Login = () => {
       alert("Login failed: " + error.message);
     }
   };
-  const handleGoogleLogin = () => {
-    console.log("Login with Google");
- 
+  const handleGoogleLogin = async () => {
+    try {
+      await googleSignIn();
+      console.log("Google login successful!");
+      navigate('/');
+    } catch (error) {
+      console.error("Google login failed:", error.message);
+      alert("Google login failed: " + error.message);
+    }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
