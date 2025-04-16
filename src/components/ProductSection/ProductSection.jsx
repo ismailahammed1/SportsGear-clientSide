@@ -8,7 +8,7 @@ const ProductSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allequipments")
+    fetch("https://sportsgear-servertside-production.up.railway.app/allequipments")
       .then((res) => res.json())
       .then((data) => {
         // Limit to 6 products on the frontend

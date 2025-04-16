@@ -12,7 +12,7 @@ const ViewDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/equipments/${id}`)
+    fetch(`https://sportsgear-servertside-production.up.railway.app/equipments/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data) {

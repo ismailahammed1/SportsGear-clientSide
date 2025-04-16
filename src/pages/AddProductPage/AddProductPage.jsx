@@ -44,7 +44,7 @@ const AddProductPage = () => {
     console.log("Form Data:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/equipments", {
+      const response = await fetch("https://sportsgear-servertside-production.up.railway.app/equipments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

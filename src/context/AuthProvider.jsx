@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
   const fetchDbUser = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/users?email=${email}`);
+      const response = await fetch(`https://sportsgear-servertside-production.up.railway.app/users?email=${email}`);
       const data = await response.json();
       return data.length > 0 ? data[0] : null;
     } catch (error) {

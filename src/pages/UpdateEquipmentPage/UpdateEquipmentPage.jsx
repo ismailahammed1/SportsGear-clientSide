@@ -56,7 +56,7 @@ const UpdateEquipmentPage = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:5000/equipments/${_id}`, {
+      const res = await fetch(`https://sportsgear-servertside-production.up.railway.app/equipments/${_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedEquipment),

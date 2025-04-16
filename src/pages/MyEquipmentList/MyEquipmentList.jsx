@@ -12,7 +12,7 @@ const MyEquipmentList = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/equipment?email=${user.email}`)
+      fetch(`https://sportsgear-servertside-production.up.railway.app/equipment?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setEquipment(data);
@@ -39,7 +39,7 @@ const MyEquipmentList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        fetch(`http://localhost:5000/equipments/${id}`, {
+        fetch(`https://sportsgear-servertside-production.up.railway.app/equipments/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

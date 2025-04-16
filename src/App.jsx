@@ -9,6 +9,7 @@ const App = () => {
     <AuthProvider>
       <ThemeProvider>
         <RouterProvider router={router} />
+        
       </ThemeProvider>
     </AuthProvider>
   );

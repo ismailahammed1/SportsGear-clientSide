@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "all-equipment", 
         element: <AllEquipmentPage />,
-        loader: () => fetch(`http://localhost:5000/allequipments/`)
+        loader: () => fetch(`https://sportsgear-servertside-production.up.railway.app/allequipments/`)
       },
       {
         path: "equipment/:id", 
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "update-equipment/:id",
         element: <PrivateRoute><UpdateEquipmentPage /></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/equipments/${params.id}`)
+        loader: ({params}) => fetch(`https://sportsgear-servertside-production.up.railway.app/equipments/${params.id}`)
       },
     ]
   }
