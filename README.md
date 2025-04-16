@@ -1,8 +1,9 @@
-# 🏋️ Tech on Brun - Sports Equipment Marketplace
+# 🏋️ Sports Equipment Marketplace
 
 🌐 **Live Site font-end:*https://sportsgear-19a96.web.app/* 
- **Live Site font-end:*https://sportsgear-servertside-production.up.railway.app/* 
 
+git repo client : https://github.com/ismailahammed1/SportsGear-clientSide
+git repo server: https://github.com/ismailahammed1/SportsGear-ServertSide
 sports gear is a full-featured sports equipment marketplace where users can explore, add, and manage sports gear. It’s built with a modern tech stack including **React.js**, **Node.js**, **Firebase**, and **MongoDB**.
 
 ## 🚀 Features
@@ -22,5 +23,3 @@ sports gear is a full-featured sports equipment marketplace where users can expl
 - **Deployment**: Firebase Hosting
 
 
-git remote add origin https://github.com/ismailahammed1/SportsGear-cli
-git push -u origin maingit commit -m
