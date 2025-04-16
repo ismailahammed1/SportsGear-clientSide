@@ -1,6 +1,7 @@
 # 🏋️ Tech on Brun - Sports Equipment Marketplace
 
-🌐 **Live Site:** 
+🌐 **Live Site font-end:*https://sportsgear-19a96.web.app/* 
+ **Live Site font-end:*https://sportsgear-servertside-production.up.railway.app/* 
 
 sports gear is a full-featured sports equipment marketplace where users can explore, add, and manage sports gear. It’s built with a modern tech stack including **React.js**, **Node.js**, **Firebase**, and **MongoDB**.
 
