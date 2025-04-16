@@ -41,7 +41,7 @@ const AddProductPage = () => {
       userEmail,
     };
 
-    console.log("Form Data:", formData);
+   
 
     try {
       const response = await fetch("https://sportsgear-servertside-production.up.railway.app/equipments", {
@@ -52,8 +52,6 @@ const AddProductPage = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log("Server Response:", data);
-
       // Show success alert and navigate
       Swal.fire({
         position: 'center',
@@ -65,7 +63,6 @@ const AddProductPage = () => {
         navigate("/all-equipment"); // Navigate to /all-equipment
       });
     } catch (error) {
-      console.error("Error adding product:", error);
 
       // Show error alert
       Swal.fire({

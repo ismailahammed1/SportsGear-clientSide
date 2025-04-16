@@ -19,7 +19,6 @@ const MyEquipmentList = () => {
           setLoading(false);
         })
         .catch((err) => {
-          console.error("Error fetching user equipment:", err);
           setLoading(false);
         });
     } else {

@@ -32,7 +32,6 @@ const Login = () => {
       });
       navigate(from, { replace: true });
     } catch (error) {
-      console.error("Login failed:", error.message);
       setError(error.message);
       Swal.fire({
         position: 'center',
@@ -59,7 +58,6 @@ const Login = () => {
       });
       navigate(from, { replace: true });
     } catch (error) {
-      console.error("Google login failed:", error.message);
       setError(error.message);
       Swal.fire({
         position: 'center',
